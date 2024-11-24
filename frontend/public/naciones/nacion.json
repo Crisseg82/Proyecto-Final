@@ -1,0 +1,28 @@
+[
+    {
+        "nation": "Mondstadt",
+        "description": "La Capital de la Libertad al noreste de Teyvat. Entre cadenas montañosas y planicies amplias, el viento de libertad trae consigo el aroma de diente de león y acaricia el Lago de Sidra, llevando a la ciudad en medio del lago la bendición y el favor de Barbatos.",
+        "image": "https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20200320/2020032014490020732.jpg" 
+    },
+    {
+        "nation": "Liyue",
+        "description": "Liyue yace imponente entre faldas montañosas, bosques de piedra, bastas planicies y una costa llena de vida, que conforman una tierra llena de riquezas, con cambios de estación claramente definidos y llenos de color. ¿Cuántos obsequios del Arconte Geo yacerán enterrados entre sus montañas?",
+        "image": "https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20200320/2020032014583613234.jpg" 
+    },
+    {
+        "nation": "Inazuma",
+        "description": "Un archipiélago situado en el extremo oriente de Teyvat. Encara tormentas perpetuas, adéntrate en la isla de las flores de cerezo, en sus playas, los imponentes acantilados y las solitarias montañas, y presencia la eternidad perseguida por Su Excelencia, la todapoderosa Narukami.",
+        "image": "https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20210719/2021071920324227852.jpg" 
+    },
+    {
+        "nation": "Sumeru",
+        "description": "La nación de eruditos situada en el medio oeste de Teyvat. Una tierra exótica en la que coexisten exuberantes bosques tropicales y áridos desiertos, donde crecen y se marchitan innumerables frutos de la sabiduría. Todo viajero que llegue a esta nación podrá adquirir valiosos conocimientos atravesando el bosque y subiendo los escalones que conducen hacia el conocimiento o adentrándose en el desierto y descubriendo sus antiguas ruinas.",
+        "image": "https://act-webstatic.hoyoverse.com/upload/contentweb/2022/08/16/8969f683b92839ac427c875d0d742be2_9007315741660033683.jpg" 
+    },
+    {
+        "nation": "Fontaine",
+        "description": "El origen de toda agua se halla en el centro de Teyvat. Sigue el transcurso del agua, atraviesa la frondosa naturaleza, los densos bosques y el mar de arena y finalmente llegarás a la cuna y el origen de todas las aguas del continente. En lo más alto de las cascadas y en la metrópoli marina que se yergue sobre las planicies, historias nunca oídas y leyendas tiempo atrás olvidadas, como si de una nación sepultada en lo más profundo de las aguas se trataran, anhelan fervientemente la llegada de algún visitante.",
+        "image": "https://webstatic.hoyoverse.com/upload/op-public/2023/08/10/721a74c43614d7aeb25b046cabfb57be_2232465004168336408.jpg" 
+    }
+    
+]

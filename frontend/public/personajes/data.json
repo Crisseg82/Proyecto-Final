@@ -1,0 +1,110 @@
+[
+    {
+        "id": 1,
+        "name": "Yelan",
+        "nation": "Liyue",
+        "weapon": "Arco",
+        "element": "Hydro",
+        "description": "Una misteriosa persona que dice trabajar para el Ministerio de Asuntos Civiles, pero que no existe según los registros del propio Ministerio",
+        "image": "https://act-webstatic.hoyoverse.com/upload/contentweb/2022/07/19/073932dc472fa00623cefb70a18df516_4188584612582858600.png"
+    },
+    {
+        "id": 2,
+        "name": "Hu Tao",
+        "nation": "Liyue",
+        "weapon": "Lanza",
+        "element": "Pyro",
+        "description": "Hu Tao es la 77.ᵃ directora de la Funeraria El Camino, es la encargada de todos los asuntos funerarios de Liyue. Invierte toda su energía en que el último adiós del cliente sea lo más solemne posible y en proteger el equilibrio entre el yin y el yang",
+        "image": "https://act-webstatic.hoyoverse.com/upload/contentweb/2022/07/19/300df2aed5060579f08d7db601d8710d_4718581764649753850.png"
+    },
+    {
+        "id": 3,
+        "name": "YaoYao",
+        "nation": "Liyue",
+        "weapon": "Lanza",
+        "element": "Dendro",
+        "description": "Originaria de una zona rural no muy lejos de la Aldea Chingtsé, Yaoyao creció con la naturaleza a su lado. Al ver potencial en Yaoyao, la Caminante Errante la aceptó como su discípula, y Yaoyao dejó las tranquilas montañas para vivir con su maestro en el luminoso y bullicioso puerto de Liyue",
+        "image": "https://webstatic.hoyoverse.com/upload/op-public/2023/01/16/52985680295fe1bf3b9eebbbace892f6_2359952543393457185.png"
+    },
+    {
+        "id": 4,
+        "name": "Yun Jin",
+        "nation": "Liyue",
+        "weapon": "Lanza",
+        "element": "Geo",
+        "description": "Una renombrada cantante de ópera de Liyue que es experta tanto en la creación de obras como en el canto. Su estilo es único, exquisito y delicado, como su propia persona.",
+        "image": "https://act-webstatic.hoyoverse.com/upload/contentweb/2022/07/19/974d7a34d3cc71f74ac98e50d4b935fc_5389859560480666296.png"
+    },
+    {
+        "id": 5,
+        "name": "ShenHe",
+        "nation": "Liyue",
+        "weapon": "Lanza",
+        "element": "Cryo",
+        "description": "Aunque nació en el mundo humano, acabó siendo una discípula de los Adeptus. Creció en las montañas, lejos de Liyue, con su alma atada con cuerdas rojas, entrenando así tanto su cuerpo como su mente. una rama familiar de un clan de exorcistas. Debido a ciertas razones, la Preservadora de Nubes la tomó como discípula",
+        "image": "https://act-webstatic.hoyoverse.com/upload/contentweb/2022/07/19/cb95a5b5d57165a4970d801c5dcf0435_5569364937231988506.png"
+    },
+    {
+        "id": 6,
+        "name": "Xianling",
+        "nation": "Liyue",
+        "weapon": "Lanza",
+        "element": "Pyro",
+        "description": "La jefa de cocina del Restaurante Wanmin y también camarera allí, Xiangling es una apasionada de la cocina y destaca en sus platos picantes y característicos. Aunque todavía es joven, Xiangling es una verdadera maestra de las artes culinarias con todas las habilidades de un veterano de la cocina.",
+        "image": "https://act-webstatic.hoyoverse.com/upload/contentweb/2022/07/19/1169862f9fa35734b06ce09c96dad9ae_7568869270977595607.png"
+    },
+    {
+        "id": 7,
+        "name": "Keching",
+        "nation": "Liyue",
+        "weapon": "Espada",
+        "element": "Electro",
+        "description": "Como el Equilibrio Terrenal de las Siete Estrellas de Liyue, es alguien que busca sus propias respuestas en lugar de dejar ociosamente dejar que el caos se vuelva loco en Liyue. Ella elige su propio camino con su propio poder y habilidad, en lugar de dejar que los dioses determinen su destino.",
+        "image": "https://act-webstatic.hoyoverse.com/upload/contentweb/2022/07/19/d063646e97392638e07da24ce6b8c3cb_6050643483305814403.png"
+    },
+    {
+        "id": 8,
+        "name": "Ganyu",
+        "nation": "Liyue",
+        "weapon": "Arco",
+        "element": "Cryo",
+        "description": "Este personaje es muy similar a un humano, pero cuenta con dos cuernos rojos parecidos a los de una cabra y es que, debido a su sangre, Ganyu suele ser extremadamente tranquila y puede lidiar con cualquier conflicto sin problemas.",
+        "image": "https://act-webstatic.hoyoverse.com/upload/contentweb/2022/07/19/1ae0d0aaad9ee9b55652ea7ec67f0465_8269226963862845372.png"
+    },
+    {
+        "id": 9,
+        "name": "Yanfei",
+        "nation": "Liyue",
+        "weapon": "Catalizador",
+        "element": "Pyro",
+        "description": "Yanfei es muy reconocida en la región de Liyue gracias a su desempeño en la parte legal, procura siempre de ayudar a quien lo necesite sin importar donde se encuentre. Debido a sus constantes viajes, las personas la empezaron a llamar Yanfei la ley andante. Es poseedora del elemento Pyro, y no solo se enfoca en ayudar a las personas legalmente, también las ayuda en el combate.",
+        "image": "https://act-webstatic.hoyoverse.com/upload/contentweb/2022/07/19/494f7aa4668cb7fe2d6d0463e7cc835f_8099715532763355104.png"
+    },
+    {
+        "id": 10,
+        "name": "Xianyun",
+        "nation": "Liyue",
+        "weapon": "Catalizador",
+        "element": "Anemo",
+        "description": "Es una inventora que se mudó recientemente al puerto de Liyue, es en realidad la forma humana de la Adeptus Preservadora de Nubes y ha elegido un nuevo nombre para ocultar su identidad.",
+        "image": "https://fastcdn.hoyoverse.com/content-v2/hk4e/119401/d90148725e88befcb5ab715daff4fb78_7567749653854887214.png"
+    },
+    {
+        "id": 11,
+        "name": "Gaming",
+        "nation": "Liyue",
+        "weapon": "Mandoble",
+        "element": "Pyro",
+        "description": "Escolta de primera categoría de la Agencia de Transporte Seguro Cofrespada y líder del grupo Bestias Místicas Poderosas. De naturaleza conversadora y extrovertida, es la típica persona que se lleva bien con todo el mundo.",
+        "image": "https://fastcdn.hoyoverse.com/content-v2/hk4e/119403/c649538cd00d8802daf3051a4f7d8cc3_7678226519918318299.png"
+    },
+    {
+        "id": 12,
+        "name": "Qiqi",
+        "nation": "Liyue",
+        "weapon": "Espada",
+        "element": "Cryo",
+        "description": "Qiqi es una aprendiz y recolectora de hierbas de la Farmacia Bubu. Un Adeptus la bendijo para que se convirtiera en una zombie que se da órdenes a sí misma para actuar. Se caracteriza por tener muy mala memoria, para cumplir con sus labores diarias siempre lleva un cuaderno de apuntes con ella. Sin embargo, el cuaderno no le sirve de mucho, porque siempre se olvida de leerlo...",
+        "image": "https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20200903/2020090317141247472.png"
+    }
+]

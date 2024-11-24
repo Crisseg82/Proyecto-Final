@@ -1,0 +1,40 @@
+{
+    "elements": [
+      { "name": "Anemo", "image": "/images/Anemo.png" },
+      { "name": "Geo", "image": "/images/Geo.png" },
+      { "name": "Electro", "image": "/images/Electro.png" },
+      { "name": "Dendro", "image": "/images/Dendro.png" },
+      { "name": "Hydro", "image": "/images/Hydro.png" },
+      { "name": "Pyro", "image": "/images/Pyro.png" },
+      { "name": "Cryo", "image": "/images/Cryo.png" }
+    ],
+    "reactions": [
+      { "elements": ["Cryo", "Anemo"], "description": "Ventisca: Evita las defensas enemigas" },
+      { "elements": ["Dendro", "Pyro"], "description": "Quemadura: Inflige daño de Pyro a lo largo del tiempo" },
+      { "elements": ["Geo", "Cryo"], "description": "Cristalizar: Otorga un escudo de cristal" },
+      { "elements": ["Geo", "Electro"], "description": "Cristalizar: Otorga un escudo de cristal" },
+      { "elements": ["Geo", "Hydro"], "description": "Cristalizar: Otorga un escudo de cristal" },
+      { "elements": ["Geo", "Pyro"], "description": "Cristalizar: Otorga un escudo de cristal" },
+      { "elements": ["Geo", "Anemo"], "description": "Polvo: Golpea a los enemigos" },
+      { "elements": ["Electro", "Hydro"], "description": "Electrocargado: Inflige daño eléctrico prolongado" },
+      { "elements": ["Cryo", "Hydro"], "description": "Helado: Congela al enemigo" },
+      { "elements": ["Geo", "Pyro"], "description": "Magma: Aplica un escudo de fuego que quema a los enemigos" },
+      { "elements": ["Cryo", "Pyro"], "description": "Derretir: Inflige daño adicional" },
+      { "elements": ["Geo", "Hydro"], "description": "Barro: Ralentiza el movimiento del enemigo y su velocidad de ataque" },
+      { "elements": ["Electro", "Pyro"], "description": "Sobrecargado: Inicia el ataque AoE Pyro" },
+      { "elements": ["Dendro", "Hydro"], "description": "Veneno: Inicia el ataque de veneno AoE" },
+      { "elements": ["Geo", "Cryo"], "description": "Destrozar: Aumenta las posibilidades de realizar un ataque crítico" },
+      { "elements": ["Cryo", "Electro"], "description": "Superconductor: Inicia el ataque Cryo AoE y reduce la resistencia física del enemigo en un 50%" },
+      { "elements": ["Anemo", "Cryo"], "description": "Remolino: Inflige daño elemental adicional y causa propagación" },
+      { "elements": ["Anemo", "Electro"], "description": "Remolino: Inflige daño elemental adicional y causa propagación" },
+      { "elements": ["Anemo", "Hydro"], "description": "Remolino: Inflige daño elemental adicional y causa propagación" },
+      { "elements": ["Anemo", "Pyro"], "description": "Remolino: Inflige daño elemental adicional y causa propagación" },
+      { "elements": ["Geo", "Dendro"], "description": "Espina: Inflige sangrado a los enemigos y deja trampas afiladas que causan daño" },
+      { "elements": ["Hydro", "Pyro"], "description": "Vaporizar: Inflige daño adicional" },
+      { "elements": ["Dendro", "Electro"], "description": "Aceleracion: Inflige daño adicional dependiendo si el proximo ataque es Dendro(Propagacion) o Electro(Intensificacion)" },
+      { "elements": ["Dendro", "Anemo"], "description": "No hay reaccion entre estos elementos" },
+      { "elements": ["Dendro", "Cryo"], "description": "No hay reaccion entre estos elementos" }
+      
+    ]
+  }
+  
