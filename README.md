@@ -60,6 +60,20 @@ En esta app se utiliza:
 
 ## Endpoints del API
 
+- `GET /api/personajes` - Obtiene la lista de todos los personajes
+- `GET /api/naciones` - Obtiene la lista de todas las naciones
+- `GET /api/elementos` - Obtiene la lista de todos los elementos 
 
 
 
+## OBSERVACIONES
+ Para este proyecto me base en mi anterior trabajo hecho en React "InfoGenshin", y mis objetivos son:
+ - Conectar el proyecto Backend y el Frontend
+ - Reemplazar los documentos JSON estaticos por contenido mas dinamico traido de una api propia hecha con Express y MongoDB.
+ - Crear una seccion en el apartado de personajes para hacer operaciones CRUD, en este caso... Crear, Editar y eliminar personajes
+ - Crear un apartado para el logeo de usuarios
+ - Hacer correcciones en el CSS
+ - Hacer el deploy respectivo del proyecto.
+
+ Hasta el momento no tuve muchas complicaciones para conectar el back y el front. Tuve algunos problemas con las rutas al momento de traer la informacion, ya que, algunos nombres no coincidian y tuve que verificar si la informacion era traida correctamente, viendo directamente en el buscador de google si traia bien el JSON. Cosa que no hacia, por ende pude saber que el error era que no estaba exportando bien el modelo traido de la base de datos.
+El siguiente problema que tuve fue que traia toda la informacion pero no las imagenes, intente traerlas de manera interna en la carpeta public de mi back, pero lo solucione por el momento, es mas que un error de organizacion de las carpetas, asi que subi las imagenes de manera local a la carpeta /public y separe las imagenes para las secciones de Elementos, Personajes y Naciones e inclui las rutas en server.js para que todo funcione correctamente. Hecho esto, cambie el codigo de mi front para que la informacion que se traiga sea a traves del puerto de mi backend, todo esto solicitando la informacion con la URL brindada por la biblioteca de axios

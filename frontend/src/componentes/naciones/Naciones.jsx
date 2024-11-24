@@ -7,17 +7,18 @@ const Nacion = () => {
     const [showDescription, setShowDescription] = useState({});
 
     useEffect(() => {
-        const fetchNations = async () => {
-            try {
-                const response = await axios.get('/naciones');
-                setNations(response.data);
-            } catch (error) {
-                console.error('Error al obtener las naciones:', error);
-            }
-        };
+    const fetchNations = async () => {
+        try {
+            const response = await axios.get('/naciones');
+            console.log('Naciones obtenidas:', response.data);
+            setNations(response.data);
+        } catch (error) {
+            console.error('Error al obtener las naciones:', error.response || error.message);
+        }
+    };
 
-        fetchNations();
-    }, []);
+    fetchNations();
+}, []);
 
     const toggleDescription = (index) => {
         setShowDescription((prevState) => ({
@@ -39,11 +40,9 @@ const Nacion = () => {
                     <div className="nation-info">
                         <h2>{nation.nation}</h2>
                     </div>
-                    {showDescription[index] && (
-                        <div className="description show-description">
-                            <p>{nation.description}</p>
-                        </div>
-                    )}
+                    <div className={`description ${showDescription[index] ? 'show-description' : ''}`}>
+                        <p>{nation.description}</p>
+                    </div>
                 </div>
             ))}
         </div>
