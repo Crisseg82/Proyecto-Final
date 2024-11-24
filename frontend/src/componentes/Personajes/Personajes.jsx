@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from '../../api/axiosConfig'; // Usa la configuración de Axios
+import axios from '../../api/axiosConfig';
 import './Personajes.css';
 
 const Personajes = () => {
@@ -44,7 +44,7 @@ const Personajes = () => {
                         >
                             {favorites.includes(character.id) ? 'Quitar de Favoritos' : 'Añadir a Favoritos'}
                         </button>
-                        <img src={character.image} alt={character.name} />
+                        <img src={`http://localhost:5000${character.image}`} alt={character.name} />
                         <div className='descripcionp'>
                             <strong>{character.name}</strong>
                             <hr />
@@ -69,7 +69,10 @@ const Personajes = () => {
                     .filter(character => favorites.includes(character.id))
                     .map(favCharacter => (
                         <div key={favCharacter.id} className="favorite-card">
-                            <img src={favCharacter.image} alt={favCharacter.name} />
+                            <img 
+                    src={`http://localhost:5000${favCharacter.image}`} 
+                    alt={favCharacter.name} 
+                />
                             <strong>{favCharacter.name}</strong>
                         </div>
                     ))
