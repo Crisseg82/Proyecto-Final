@@ -5,12 +5,13 @@ const ElementList = ({ elements, onSelect }) => {
     <div className="element-list">
       {elements.map((element) => (
         <img
-          key={element.name}
-          src={element.image}
-          alt={element.name}
-          onClick={() => onSelect(element.name)}
-          className="element-image"
-        />
+        key={element.name}
+        src={`http://localhost:5000${element.image}`}
+        alt={element.name}
+        onClick={() => onSelect(element.name)}
+        className="element-image"
+      />
+      
       ))}
     </div>
   );

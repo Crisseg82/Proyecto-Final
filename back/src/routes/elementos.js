@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Element = require('../../src/models/elementosModel');
+const Elemento = require('../../src/models/elementosModel');
 
 // Ruta para obtener todos los elementos
 router.get('/', async (req, res) => {
@@ -12,6 +12,6 @@ router.get('/', async (req, res) => {
     }
 });
 
-// Puedes agregar más rutas relacionadas con elementos aquí
+
 
 module.exports = router;

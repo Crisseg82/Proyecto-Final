@@ -1,8 +1,8 @@
-// src/App.js
 import React, { useState, useEffect } from 'react';
+import axios from '../../api/axiosConfig';
 import ElementList from './ElementList';
 import ReactionDisplay from './ReactionDisplay';
-import './elementos.css'
+import './elementos.css';
 
 const MezclaElement = () => {
   const [elements, setElements] = useState([]);
@@ -11,18 +11,26 @@ const MezclaElement = () => {
   const [reaction, setReaction] = useState(null);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchElements = async () => {
       try {
-        const response = await fetch('/Elementos/elementos.json');
-        const data = await response.json();
-        setElements(data.elements);
-        setReactions(data.reactions);
+        const response = await axios.get('/elementos');
+        setElements(response.data);
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error('Error al obtener elementos:', error);
       }
     };
 
-    fetchData();
+    const fetchReactions = async () => {
+      try {
+        const response = await axios.get('/reacciones');
+        setReactions(response.data);
+      } catch (error) {
+        console.error('Error al obtener reacciones:', error);
+      }
+    };
+
+    fetchElements();
+    fetchReactions();
   }, []);
 
   const handleSelect = (element) => {
@@ -32,14 +40,21 @@ const MezclaElement = () => {
   };
 
   useEffect(() => {
+    const fetchReaction = async (e1, e2) => {
+      try {
+        const response = await axios.get(`/reacciones/${e1}/${e2}`);
+        setReaction(response.data || null);
+      } catch (error) {
+        console.error('Error al buscar la reacción:', error);
+      }
+    };
+
     if (selectedElements.length === 2) {
       const [e1, e2] = selectedElements;
-      const foundReaction = reactions.find(
-        (r) => (r.elements.includes(e1) && r.elements.includes(e2)) || (r.elements.includes(e2) && r.elements.includes(e1))
-      );
-      setReaction(foundReaction || null);
+      fetchReaction(e1, e2);
     }
-  }, [selectedElements, reactions]);
+  }, [selectedElements]);
+
   const handleReset = () => {
     setSelectedElements([]);
     setReaction(null);
@@ -54,4 +69,5 @@ const MezclaElement = () => {
     </div>
   );
 };
+
 export default MezclaElement;

@@ -6,6 +6,7 @@ const path = require('path');
 const personajesRoutes = require('./routes/personajes');
 const nacionesRoutes = require('./routes/naciones');
 const elementosRoutes = require('./routes/elementos');
+const reaccionesRoutes = require('./routes/reacciones');
 
 // Inicializar app
 const app = express();
@@ -26,6 +27,7 @@ app.use('/images/elementos', express.static(path.join(__dirname, 'public/images/
 app.use('/api/personajes', personajesRoutes);
 app.use('/api/naciones', nacionesRoutes);
 app.use('/api/elementos', elementosRoutes);
+app.use('/api/reacciones', reaccionesRoutes);
 
 // Puerto
 const PORT = process.env.PORT || 5000;
