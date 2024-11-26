@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from '../../api/axiosConfig';
 import './Personajes.css';
+import CrearPersonaje from './CrearPersonaje';
 
 const Personajes = () => {
     const [characters, setCharacters] = useState([]);
@@ -35,6 +36,7 @@ const Personajes = () => {
     return (
         <div id='container-personajes'>
             <h1>Personajes</h1>
+            <CrearPersonaje />
             <div className="characters-list">
                 {characters.map(character => (
                     <div key={character.id} className="character-card">
