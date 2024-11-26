@@ -24,11 +24,22 @@ const getPersonajeById = async (req, res) => {
 // Crear un nuevo personaje
 const createPersonaje = async (req, res) => {
     try {
-        const nuevoPersonaje = new Personaje(req.body);
+        const { nombre, nacion, arma, elemento, descripcion } = req.body; // Desestructurar datos enviados
+        const imagen = req.file ? `/images/personajes/${req.file.filename}` : ''; // Ruta de la imagen
+
+        const nuevoPersonaje = new Personaje({
+            nombre,
+            nacion,
+            arma,
+            elemento,
+            descripcion,
+            imagen,
+        });
+
         const personajeGuardado = await nuevoPersonaje.save();
         res.status(201).json(personajeGuardado);
     } catch (error) {
-        res.status(500).json({ error: 'Error al crear el personaje' });
+        res.status(500).json({ error: 'Error al crear el personaje', details: error });
     }
 };
 
