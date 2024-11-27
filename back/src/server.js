@@ -32,6 +32,7 @@ app.use('/api/reacciones', reaccionesRoutes);
 // Puerto
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
+// Cambia 'localhost' por '0.0.0.0' para que sea accesible externamente.
+app.listen(PORT, '0.0.0.0', () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
