@@ -18,6 +18,11 @@ connectDB();
 app.use(cors());
 app.use(express.json());
 
+// Ruta base para verificar que el servidor responde correctamente
+app.get('/', (req, res) => {
+    res.send('Servidor backend funcionando correctamente');
+});
+
 // Rutas para servir imágenes
 app.use('/images/personajes', express.static(path.join(__dirname, 'public/images/personajes')));
 app.use('/images/naciones', express.static(path.join(__dirname, 'public/images/naciones')));
