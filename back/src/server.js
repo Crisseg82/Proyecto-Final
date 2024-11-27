@@ -35,7 +35,12 @@ app.use('/api/elementos', elementosRoutes);
 app.use('/api/reacciones', reaccionesRoutes);
 
 // Puerto
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT;
+
+// Verificar que el puerto exista
+if (!PORT) {
+    throw new Error('La variable de entorno PORT no está definida');
+}
 
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`Servidor corriendo en http://0.0.0.0:${PORT}`);
