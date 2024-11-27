@@ -35,7 +35,8 @@ app.use('/api/elementos', elementosRoutes);
 app.use('/api/reacciones', reaccionesRoutes);
 
 // Puerto
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5000;
+
 
 // Verificar que el puerto exista
 if (!PORT) {
