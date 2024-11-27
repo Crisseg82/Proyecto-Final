@@ -34,24 +34,7 @@ app.use('/api/naciones', nacionesRoutes);
 app.use('/api/elementos', elementosRoutes);
 app.use('/api/reacciones', reaccionesRoutes);
 
-const PORT = process.env.PORT;
-
-if (!PORT) {
-    throw new Error('La variable de entorno PORT no está definida');
-}
-
-app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Servidor corriendo en http://0.0.0.0:${PORT}`);
-});
-
-
-// Capturar excepciones y rechazos no manejados
-process.on('uncaughtException', (err) => {
-    console.error('Uncaught Exception:', err);
-    process.exit(1);
-});
-
-process.on('unhandledRejection', (reason) => {
-    console.error('Unhandled Rejection:', reason);
-    process.exit(1);
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Servidor escuchando en el puerto ${PORT}`);
 });
