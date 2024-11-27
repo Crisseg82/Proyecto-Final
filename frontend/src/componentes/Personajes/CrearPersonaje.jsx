@@ -55,7 +55,7 @@ const CrearPersonaje = () => {
 
   return (
     <div className="crear-personaje">
-      <h2>Crear nuevo personaje</h2>
+      <h2>¡Crea tu propio personaje!</h2>
       <form onSubmit={handleSubmit} encType="multipart/form-data">
         <label htmlFor="nombre">Nombre:</label>
         <input
