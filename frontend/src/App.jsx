@@ -8,7 +8,6 @@ import Personajes from './componentes/Personajes/Personajes';
 import Elementos from './componentes/Elementos/elementos';
 import Banners from './componentes/carousel/carousel';
 import Nacion from './componentes/naciones/Naciones';
-import RegisterForm from './componentes/../api/RegisterForm'; 
 import LoginForm from './componentes/../api/LoginForm';     
 import LogoutForm from './componentes/../api/LogoutForm'; 
 import './App.css';
@@ -21,7 +20,7 @@ function App() {
       <div className='container'>
         <Header />
        
-        <Menu user={user} />
+        <Menu user={user} setUser={setUser} />
 
         <main>
           <Routes>
@@ -29,7 +28,6 @@ function App() {
             <Route path="/Personajes" element={<Personajes />} />
             <Route path="/Elementos" element={<Elementos />} />
             <Route path="/Nacion" element={<Nacion />} />
-            <Route path="/register" element={<RegisterForm />} />
             <Route path="/login" element={<LoginForm setUser={setUser} />} />
             {user && <Route path="/logout" element={<LogoutForm setUser={setUser} />} />}
           </Routes>

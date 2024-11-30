@@ -1,35 +1,54 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
+import axios from 'axios';
 import './menu.css';
 
-const Menu = ({ user }) => {  // Recibimos el estado 'user' como prop
+const Menu = ({ user, setUser }) => { // Asegúrate de recibir 'setUser' como prop
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const navigate = useNavigate();
 
     const abrirMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
 
+    const handleLogout = async () => {
+        try {
+            await axios.post('http://localhost:5000/api/auth/logout'); // Llama a la API para cerrar sesión
+            setUser(null); // Limpia el estado del usuario
+            alert('Sesión cerrada correctamente');
+            navigate('/'); // Redirige a la página principal
+        } catch (error) {
+            console.error('Error al cerrar sesión:', error);
+            alert('Hubo un problema al cerrar sesión');
+        }
+    };
+
     return (
         <nav className={`menu ${isMenuOpen ? 'active' : ''}`}>
             <button className="menu-toggle" onClick={abrirMenu}>
-                {isMenuOpen ? 'Cerrar' : 'Menu'}
+                {isMenuOpen ? 'Cerrar' : 'Menú'}
             </button>
             <ul>
                 <li><Link to="/">Inicio</Link></li>
                 <li><Link to="/Personajes">Personajes</Link></li>
-                <li><Link to="/Nacion">Nacion</Link></li>
+                <li><Link to="/Nacion">Nación</Link></li>
                 <li><Link to="/Elementos">Elementos</Link></li>
-
-                {/* Si el usuario está logueado, mostramos el link de Logout */}
-                {user ? (
-                    <li><Link to="/logout">Cerrar sesión</Link></li>
-                ) : (
-                    <>
-                        {/* Si el usuario no está logueado, mostramos Login y Registro */}
-                        <li><Link to="/login">Login</Link></li>
-                        <li><Link to="/register">Registro</Link></li>
-                    </>
-                )}
+                <div className="login-nav">
+                    {user ? (
+                        <li>
+                            <button className="logout-button" onClick={handleLogout}>
+                                Cerrar sesión
+                            </button>
+                        </li>
+                    ) : (
+                        <div className="log-icon">
+                            <li><Link to="/login">Iniciar Sesión</Link></li>
+                            <FontAwesomeIcon icon={faUser} />
+                        </div>
+                    )}
+                </div>
             </ul>
         </nav>
     );

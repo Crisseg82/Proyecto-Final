@@ -66,7 +66,7 @@ En esta app se utiliza:
 
 
 
-## OBSERVACIONES
+## OBSERVACIONES Y COMPLICACIONES DEL PROYECTO
  Para este proyecto me base en mi anterior trabajo hecho en React "InfoGenshin", y mis objetivos son:
  - Conectar el proyecto Backend y el Frontend
  - Reemplazar los documentos JSON estaticos por contenido mas dinamico traido de una api propia hecha con Express y MongoDB.
@@ -77,3 +77,5 @@ En esta app se utiliza:
 
  Hasta el momento no tuve muchas complicaciones para conectar el back y el front. Tuve algunos problemas con las rutas al momento de traer la informacion, ya que, algunos nombres no coincidian y tuve que verificar si la informacion era traida correctamente, viendo directamente en el buscador de google si traia bien el JSON. Cosa que no hacia, por ende pude saber que el error era que no estaba exportando bien el modelo traido de la base de datos.
 El siguiente problema que tuve fue que traia toda la informacion pero no las imagenes, intente traerlas de manera interna en la carpeta public de mi back, pero lo solucione por el momento, es mas que un error de organizacion de las carpetas, asi que subi las imagenes de manera local a la carpeta /public y separe las imagenes para las secciones de Elementos, Personajes y Naciones e inclui las rutas en server.js para que todo funcione correctamente. Hecho esto, cambie el codigo de mi front para que la informacion que se traiga sea a traves del puerto de mi backend, todo esto solicitando la informacion con la URL brindada por la biblioteca de axios.
+ En este punto del proyecto, intente hacer agregado de las opciones de usuario, Login, Register y Logout. Sinceramente, tuve varias complicaciones, sobre todo al momento de intentar que la informacion se guarde en la base de datos, ya que todo andaba bien pero no aparecia la informacion de los usuarios registrados en la misma. Tras esto estuve en la busqueda de problemas, y eran varios, el primer problema era que no habia hecho bien las rutas, por eso para no tener estos problemas me asegure de crear una ruta directa (authRoutes) en el que guardo las rutas para Iniciar sesion, Registrar y Cerrar sesion, despues cree un documento de modelado de los usuarios en el cual cree un esquema para traer la informacion de mongodb. Los siguientes problemas que tuve fueron directamente que no se traia la informacion correctamente, utilice POSTMAN para testear que todo este bien, pero no me traia la informacion de la url de usuarios, intente crear una coleccion aparte para usuarios en la base de datos por si esta no se habia creado bien, despues intente comprobar si esta estaba funcionando correctamente... si estaba realmente conectado a mi proyecto, siendo sincero no recuerdo como solucione esto, simplemente era un problema en el frontend que yo sepa, en todo este proceso me olvide de hacer los commits correspondientes para ir viendo el avance de a poco.
+  
