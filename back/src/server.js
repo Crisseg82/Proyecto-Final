@@ -1,73 +1,61 @@
 const express = require('express');
 const cors = require('cors');
-const connectDB = require('./config/db');
 const path = require('path');
 const session = require('express-session');
+const connectDB = require('./config/db');
+require('dotenv').config();
 
-// Importar las rutas de autenticación
-const authRoutes = require('./routes/authRoutes');
-const personajesRoutes = require('./routes/personajes');
-const nacionesRoutes = require('./routes/naciones');
-const elementosRoutes = require('./routes/elementos');
-const reaccionesRoutes = require('./routes/reacciones');
+if (!process.env.MONGODB_URI || !process.env.SESSION_SECRET) {
+    console.error('Error: Faltan variables de entorno requeridas (MONGODB_URI o SESSION_SECRET).');
+    process.exit(1);
+}
 
-// Inicializar app
+connectDB()
+    .then(() => console.log('Conexión exitosa a la base de datos'))
+    .catch((err) => {
+        console.error('Error al conectar a la base de datos:', err.message);
+        process.exit(1);
+    });
+
 const app = express();
 
-// Conexión a MongoDB
-connectDB();
+app.use(
+    session({
+        secret: process.env.SESSION_SECRET,
+        resave: false,
+        saveUninitialized: false,
+        cookie: {
+            secure: process.env.NODE_ENV === 'production',
+            httpOnly: true,
+            maxAge: 1000 * 60 * 60 * 24,
+        },
+    })
+);
 
-// Configuración de express-session
-app.use(session({
-  secret: process.env.SESSION_SECRET, // Cambia esto por una cadena secreta única
-  resave: false, // No guarda la sesión si no hay cambios
-  saveUninitialized: false, // No guarda sesiones vacías
-  cookie: { secure: false } // Cambiar a true si usas HTTPS
-}));
-
-// Middleware
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-// Ruta base para verificar que el servidor responde correctamente
+app.use('/images', express.static(path.join(__dirname, 'src/public/images'), {
+    setHeaders: (res) => res.setHeader('Cache-Control', 'public, max-age=86400'),
+}));
+
 app.get('/', (req, res) => {
-    res.send('Servidor backend funcionando correctamente');
+    res.json({ message: 'Servidor backend funcionando correctamente', status: 'OK' });
 });
 
-// Rutas para servir imágenes
-app.use('/images/personajes', express.static(path.join(__dirname, 'public/images/personajes')));
-app.use('/images/naciones', express.static(path.join(__dirname, 'public/images/naciones')));
-app.use('/images/elementos', express.static(path.join(__dirname, 'public/images/elementos')));
+app.use('/api/personajes', require('./routes/personajes'));
+app.use('/api/naciones', require('./routes/naciones'));
+app.use('/api/elementos', require('./routes/elementos'));
+app.use('/api/reacciones', require('./routes/reacciones'));
+app.use('/api/auth', require('./routes/authRoutes'));
 
-// Rutas de la API
-app.use('/api/personajes', personajesRoutes);
-app.use('/api/naciones', nacionesRoutes);
-app.use('/api/elementos', elementosRoutes);
-app.use('/api/reacciones', reaccionesRoutes);
-
-// Rutas de autenticación
-app.use('/api/auth', authRoutes);
-
-// Rutas del servidor (simplificadas para solo probar la sesión)
-app.post('/api/auth/logout', (req, res) => {
-  req.session.destroy((err) => {
-      if (err) {
-          return res.status(500).json({ message: 'Error al cerrar sesión' });
-      }
-      res.status(200).json({ message: 'Sesión cerrada correctamente' });
-  });
+app.use((err, req, res, next) => {
+    console.error('Error no manejado:', err);
+    res.status(500).json({ error: 'Error interno del servidor' });
 });
-
-app.get('/api/auth/status', (req, res) => {
-  if (req.session && req.session.user) {
-      res.status(200).json({ loggedIn: true, user: req.session.user });
-  } else {
-      res.status(200).json({ loggedIn: false });
-  }
-});
-
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`Servidor escuchando en el puerto ${PORT}`);
+    console.log(`Servidor escuchando en el puerto ${PORT}`);
 });

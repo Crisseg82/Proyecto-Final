@@ -1,13 +1,13 @@
 const mongoose = require('mongoose');
 
 const personajeSchema = new mongoose.Schema({
-    id: { type: Number, required: true, unique: true },
     name: { type: String, required: true },
     nation: { type: String, required: true },
     weapon: { type: String, required: true },
     element: { type: String, required: true },
-    description: { type: String },
-    image: { type: String } // Para almacenar la URL de la imagen
-});
+    description: { type: String }, 
+    image: { type: String }, 
+    // createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'Usuario', required: true }, // Usuario que creó el personaje
+}, { timestamps: true }); // Agrega automáticamente createdAt y updatedAt
 
 module.exports = mongoose.model('Personaje', personajeSchema);

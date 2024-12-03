@@ -18,7 +18,7 @@ function seccion() {
                 <h1>Genshin Impact</h1>
                 <p>Embárcate en un viaje a través de Teyvat para encontrar a tu familiar perdido y buscar respuestas de Los Siete, los dioses elementales. Explora cada rincón de este mundo maravilloso, une fuerzas con un amplio repertorio de personajes y revela los muchos misterios ocultos que esconde Teyvat...</p>
                 <div className='video'>
-                    <iframe  src="https://www.youtube.com/embed/_XwlRU2lrPM?si=_0d2raxbpgifey1Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <iframe  src="https://www.youtube.com/embed/_XwlRU2lrPM?si=_0d2raxbpgifey1Q" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
                 </div>
                 
 

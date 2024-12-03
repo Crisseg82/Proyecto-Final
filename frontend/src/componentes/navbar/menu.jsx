@@ -5,7 +5,7 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import './menu.css';
 
-const Menu = ({ user, setUser }) => { // Asegúrate de recibir 'setUser' como prop
+const Menu = ({ user, setUser }) => { 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const navigate = useNavigate();
 
@@ -15,7 +15,7 @@ const Menu = ({ user, setUser }) => { // Asegúrate de recibir 'setUser' como pr
 
     const handleLogout = async () => {
         try {
-            await axios.post('http://localhost:5000/api/auth/logout'); // Llama a la API para cerrar sesión
+            await axios.post('http://localhost:5000/api/auth/logout');
             setUser(null); // Limpia el estado del usuario
             alert('Sesión cerrada correctamente');
             navigate('/'); // Redirige a la página principal

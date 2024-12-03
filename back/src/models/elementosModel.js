@@ -5,7 +5,7 @@ const elementoSchema = new mongoose.Schema({
     image: { type: String },
     reactions: [
         {
-            elements: [String], // Los elementos involucrados en la reacción
+            elements: [String],
             description: { type: String }
         }
     ]

@@ -21,15 +21,15 @@ const Personajes = () => {
         fetchCharacters();
     }, []);
 
-    const handleShowDetails = (id) => {
-        setVisibleCharacterId(visibleCharacterId === id ? null : id);
+    const handleShowDetails = (_id) => {
+        setVisibleCharacterId(visibleCharacterId === _id ? null : _id);
     };
 
-    const handleToggleFavorite = (id) => {
-        if (favorites.includes(id)) {
-            setFavorites(favorites.filter(favId => favId !== id));
+    const handleToggleFavorite = (_id) => {
+        if (favorites.includes(_id)) {
+            setFavorites(favorites.filter(favId => favId !== _id));
         } else {
-            setFavorites([...favorites, id]);
+            setFavorites([...favorites, _id]);
         }
     };
 
@@ -39,23 +39,23 @@ const Personajes = () => {
             <CrearPersonaje />
             <div className="characters-list">
                 {characters.map(character => (
-                    <div key={character.id} className="character-card">
+                    <div key={character._id} className="character-card">
                         <button
-                            className={favorites.includes(character.id) ? 'favorite-button active' : 'favorite-button'}
-                            onClick={() => handleToggleFavorite(character.id)}
+                            className={favorites.includes(character._id) ? 'favorite-button active' : 'favorite-button'}
+                            onClick={() => handleToggleFavorite(character._id)}
                         >
-                            {favorites.includes(character.id) ? 'Quitar de Favoritos' : 'Añadir a Favoritos'}
+                            {favorites.includes(character._id) ? 'Quitar de Favoritos' : 'Añadir a Favoritos'}
                         </button>
                         <img src={`http://localhost:5000${character.image}`} alt={character.name} />
                         <div className='descripcionp'>
                             <strong>{character.name}</strong>
                             <hr />
                             <p>{character.description}</p>
-                            <button onClick={() => handleShowDetails(character.id)}>
-                                {visibleCharacterId === character.id ? 'Ocultar Detalles' : 'Mostrar Detalles'}
+                            <button onClick={() => handleShowDetails(character._id)}>
+                                {visibleCharacterId === character._id ? 'Ocultar Detalles' : 'Mostrar Detalles'}
                             </button>
                         </div>
-                        {visibleCharacterId === character.id && (
+                        {visibleCharacterId === character._id && (
                             <div className="character-details">
                                 <p><strong>Nación:</strong> {character.nation}</p>
                                 <p><strong>Arma:</strong> {character.weapon}</p>
@@ -68,9 +68,9 @@ const Personajes = () => {
             <div id='favorites-section'>
                 <h2>Favoritos</h2>
                 {characters
-                    .filter(character => favorites.includes(character.id))
+                    .filter(character => favorites.includes(character._id))
                     .map(favCharacter => (
-                        <div key={favCharacter.id} className="favorite-card">
+                        <div key={favCharacter._id} className="favorite-card">
                             <img 
                     src={`http://localhost:5000${favCharacter.image}`} 
                     alt={favCharacter.name} 
