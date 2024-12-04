@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import './Personajes.css'
+import './Personajes.css';
 
 const CrearPersonaje = () => {
     const [name, setName] = useState("");
@@ -33,12 +33,16 @@ const CrearPersonaje = () => {
             setMensaje("Personaje creado exitosamente");
             console.log("Personaje creado:", response.data);
 
+            // Limpiar los campos del formulario
             setName("");
             setNation("");
             setWeapon("");
             setElement("");
             setDescription("");
             setImage(null);
+
+            // Recargar la página
+            window.location.reload(); // Esto recargará la página
         } catch (error) {
             console.error("Error al crear personaje:", error);
             setMensaje("Hubo un error al crear el personaje");
@@ -47,9 +51,6 @@ const CrearPersonaje = () => {
 
     return (
         <div className="crear-personaje">
-             
-
-              
             <h2>¡Crea tu propio personaje!</h2>
             {mensaje && <p>{mensaje}</p>}
             <form onSubmit={handleSubmit} encType="multipart/form-data">
@@ -134,7 +135,6 @@ const CrearPersonaje = () => {
 
                 <button type="submit">Crear Personaje</button>
             </form>
-                
         </div>
     );
 };

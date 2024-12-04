@@ -7,6 +7,7 @@ const Personajes = () => {
     const [characters, setCharacters] = useState([]); // Lista de personajes
     const [visibleCharacterId, setVisibleCharacterId] = useState(null); // ID del personaje con detalles visibles
     const [favorites, setFavorites] = useState([]); // IDs de personajes favoritos
+    const [mensaje, setMensaje] = useState(""); // Mensaje de feedback
 
     // Carga de personajes desde el backend
     useEffect(() => {
@@ -36,9 +37,32 @@ const Personajes = () => {
         );
     };
 
+    // Eliminar un personaje
+    const handleDelete = async (_id) => {
+        if (window.confirm("¿Estás seguro de que deseas eliminar este personaje?")) {
+            try {
+                await axios.delete(`/personajes/${_id}`);
+                setMensaje("Personaje eliminado exitosamente");
+                setCharacters((prevCharacters) =>
+                    prevCharacters.filter((character) => character._id !== _id)
+                );
+            } catch (error) {
+                console.error('Error al eliminar personaje:', error);
+                setMensaje("Hubo un error al eliminar el personaje");
+            }
+        }
+    };
+
+    // Redirigir a la página de edición
+    const handleEdit = (_id) => {
+        window.location.href = `/editar-personaje/${_id}`;
+    };
+
     return (
         <div id="container-personajes">
             <h1>Personajes</h1>
+
+            {mensaje && <p className="mensaje-feedback">{mensaje}</p>}
 
             {/* Formulario para crear personajes */}
             <CrearPersonaje />
@@ -48,8 +72,7 @@ const Personajes = () => {
                 {characters.map((character) => (
                     <div key={character._id} className="character-card">
                         <button
-                            className={`favorite-button ${favorites.includes(character._id) ? 'active' : ''
-                                }`}
+                            className={`favorite-button ${favorites.includes(character._id) ? 'active' : ''}`}
                             onClick={() => handleToggleFavorite(character._id)}
                         >
                             {favorites.includes(character._id)
@@ -85,6 +108,8 @@ const Personajes = () => {
                                 <p>
                                     <strong>Elemento:</strong> {character.element}
                                 </p>
+                                <button onClick={() => handleEdit(character._id)}>Editar</button>
+                                <button onClick={() => handleDelete(character._id)}>Eliminar</button>
                             </div>
                         )}
                     </div>

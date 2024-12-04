@@ -5,7 +5,7 @@ const getAllPersonajes = async (req, res) => {
     try {
         const personajes = await Personaje.find();
         personajes.forEach(personaje => {
-            // Asegúrate de que no haya duplicación
+            
             if (!personaje.image.startsWith('/images/personajes')) {
                 personaje.image = `/images/personajes/${personaje.image}`;
             }
@@ -60,7 +60,7 @@ const createPersonaje = async (req, res) => {
             element,
             description,
             image: imagePath,
-            createdBy: req.user ? req.user._id : null, // ID del usuario si existe
+            createdBy: req.user ? req.user._id : null, 
         });
 
         await nuevoPersonaje.save();

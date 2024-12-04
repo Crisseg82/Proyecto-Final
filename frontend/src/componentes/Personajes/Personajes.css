@@ -192,3 +192,67 @@
 }
 
 
+
+.form-image:hover {
+  transform: scale(1.05);
+}
+
+
+/* EDITAR PERSONAJES */
+#editar-personaje {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: rgba(43, 24, 24, 0.301);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+}
+
+#editar-personaje h1 {
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+
+#editar-personaje label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #f708ff;
+}
+
+#editar-personaje textarea {
+  resize: vertical;
+  height: 80px;
+}
+
+#editar-personaje button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #d400ff;
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#editar-personaje button:hover {
+  background-color: #660556;
+}
+#editar-personaje input[type="text"],
+#editar-personaje select,
+#editar-personaje textarea,
+#editar-personaje input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  font-size: 14px;
+}

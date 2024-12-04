@@ -5,6 +5,7 @@ import Footer from './componentes/footer/footer';
 import Menu from './componentes/navbar/menu'; 
 import Seccion from './componentes/seccion/seccion';
 import Personajes from './componentes/Personajes/Personajes';
+import EditarPersonaje from './componentes/Personajes/EditarPersonaje'; // Nueva importación
 import Elementos from './componentes/Elementos/elementos';
 import Banners from './componentes/carousel/carousel';
 import Nacion from './componentes/naciones/Naciones';
@@ -30,6 +31,8 @@ function App() {
             <Route path="/Nacion" element={<Nacion />} />
             <Route path="/login" element={<LoginForm setUser={setUser} />} />
             {user && <Route path="/logout" element={<LogoutForm setUser={setUser} />} />}
+            {/* Nueva ruta para editar personajes */}
+            <Route path="/editar-personaje/:id" element={<EditarPersonaje />} />
           </Routes>
         </main>
 
