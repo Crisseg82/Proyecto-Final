@@ -6,7 +6,7 @@ const ElementList = ({ elements, onSelect }) => {
       {elements.map((element) => (
         <img
         key={element.name}
-        src={`http://localhost:5000${element.image}`}
+        src={`https://proyecto-final-ejj7.onrender.com${element.image}`}
         alt={element.name}
         onClick={() => onSelect(element.name)}
         className="element-image"

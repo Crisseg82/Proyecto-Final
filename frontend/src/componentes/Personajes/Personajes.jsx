@@ -80,7 +80,7 @@ const Personajes = () => {
                                 : 'Añadir a Favoritos'}
                         </button>
                         <img
-                            src={`http://localhost:5000${character.image.replace('/images/personajes/images/personajes', '/images/personajes')}`}
+                            src={`https://proyecto-final-ejj7.onrender.com${character.image.replace('/images/personajes/images/personajes', '/images/personajes')}`}
                             alt={character.name}
                             className="character-image"
                         />
@@ -124,7 +124,7 @@ const Personajes = () => {
                     .map((favCharacter) => (
                         <div key={favCharacter._id} className="favorite-card">
                             <img
-                                src={`http://localhost:5000${favCharacter.image.replace('/images/personajes/images/personajes', '/images/personajes')}`}
+                                src={`https://proyecto-final-ejj7.onrender.com${favCharacter.image.replace('/images/personajes/images/personajes', '/images/personajes')}`}
                                 alt={favCharacter.name}
                                 className="favorite-image"
                             />

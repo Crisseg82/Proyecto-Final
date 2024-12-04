@@ -5,7 +5,7 @@ const LogoutForm = ({ setUser }) => {
   const handleLogout = async () => {
     try {
       // Petición POST para cerrar sesión
-      const response = await axios.post('http://localhost:5000/api/auth/logout');
+      const response = await axios.post('https://proyecto-final-ejj7.onrender.com/api/auth/logout');
       alert(response.data.message);  // Mostrar mensaje de éxito
       setUser(null);  // Restablecer el estado del usuario
     } catch (error) {

@@ -32,7 +32,7 @@ const Nacion = () => {
             {nations.map((nation, index) => (
                 <div key={nation.nation} className="nation-card">
                     <img
-                        src={`http://localhost:5000${nation.image}`}
+                        src={`https://proyecto-final-ejj7.onrender.com${nation.image}`}
                         alt={nation.nation}
                         className="nation-image"
                         onClick={() => toggleDescription(index)}

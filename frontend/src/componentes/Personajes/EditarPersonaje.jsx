@@ -59,7 +59,7 @@ const EditarPersonaje = () => {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       console.log('Personaje actualizado:', response.data);
-      navigate('/personajes'); // Redirigir a la página de personajes después de la edición
+      navigate('/personajes');
     } catch (error) {
       console.error('Error al actualizar el personaje:', error);
     }

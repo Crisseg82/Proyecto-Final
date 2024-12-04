@@ -5,7 +5,7 @@ const CheckLoginStatus = ({ setUser }) => {
     useEffect(() => {
         const checkStatus = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/auth/status');
+                const response = await axios.get('https://proyecto-final-ejj7.onrender.com/api/auth/status');
                 if (response.data.loggedIn) {
                     setUser(response.data.user);
                 } else {

@@ -15,7 +15,7 @@ const Menu = ({ user, setUser }) => {
 
     const handleLogout = async () => {
         try {
-            await axios.post('http://localhost:5000/api/auth/logout');
+            await axios.post('https://proyecto-final-ejj7.onrender.com/api/auth/logout');
             setUser(null); // Limpia el estado del usuario
             alert('Sesión cerrada correctamente');
             navigate('/'); // Redirige a la página principal

@@ -20,7 +20,7 @@ const RegisterForm = ({ setShowRegister }) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/register', formData);
+      const response = await axios.post('https://proyecto-final-ejj7.onrender.com/api/auth/register', formData);
       alert(response.data.message || 'Registro exitoso');
       
       // Limpia el formulario después de un registro exitoso
