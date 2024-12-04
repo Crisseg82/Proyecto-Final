@@ -3,6 +3,7 @@ const cors = require('cors');
 const path = require('path');
 const session = require('express-session');
 const connectDB = require('./config/db');
+const MongoStore = require('connect-mongo');
 require('dotenv').config();
 const app = express();
 
@@ -21,18 +22,22 @@ connectDB()
 
 
 
-app.use(
-    session({
-        secret: process.env.SESSION_SECRET,
-        resave: false,
-        saveUninitialized: false,
-        cookie: {
-            secure: process.env.NODE_ENV === 'production',
-            httpOnly: true,
-            maxAge: 1000 * 60 * 60 * 24,
-        },
-    })
-);
+    app.use(
+        session({
+            secret: process.env.SESSION_SECRET,
+            resave: false,
+            saveUninitialized: false,
+            store: MongoStore.create({
+                mongoUrl: process.env.MONGODB_URI,
+                collectionName: 'sessions',
+            }),
+            cookie: {
+                secure: process.env.NODE_ENV === 'production',
+                httpOnly: true,
+                maxAge: 1000 * 60 * 60 * 24, // 1 día
+            },
+        })
+    );
 
 app.use(cors());
 app.use(express.json());
