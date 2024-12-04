@@ -32,7 +32,7 @@ const RegisterForm = ({ setShowRegister }) => {
         email: '',
       });
 
-      // Cierra el formulario de registro
+  
       setShowRegister(false);
 
     } catch (error) {

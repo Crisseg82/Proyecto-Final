@@ -6,8 +6,8 @@ const LogoutForm = ({ setUser }) => {
     try {
       // Petición POST para cerrar sesión
       const response = await axios.post('https://proyecto-final-ejj7.onrender.com/api/auth/logout');
-      alert(response.data.message);  // Mostrar mensaje de éxito
-      setUser(null);  // Restablecer el estado del usuario
+      alert(response.data.message);
+      setUser(null); 
     } catch (error) {
       console.error("Error al cerrar sesión:", error);
       alert('Hubo un error al cerrar sesión');

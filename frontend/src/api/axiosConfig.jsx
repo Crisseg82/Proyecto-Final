@@ -23,7 +23,7 @@ axiosInstance.interceptors.response.use(
     (error) => {
         // Manejar errores, como redireccionar al login si el usuario no está autenticado
         if (error.response?.status === 401) {
-            // Redirigir al login, por ejemplo
+            // Redirigir al login
             window.location.href = '/login';
         }
         return Promise.reject(error);

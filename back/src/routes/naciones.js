@@ -12,6 +12,5 @@ router.get('/', async (req, res) => {
     }
 });
 
-// Puedes agregar más rutas relacionadas con naciones aquí
 
 module.exports = router;

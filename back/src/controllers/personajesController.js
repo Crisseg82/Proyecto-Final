@@ -26,7 +26,7 @@ const getPersonajeById = async (req, res) => {
         if (!personaje) {
             return res.status(404).json({ error: 'Personaje no encontrado' });
         }
-        res.json(personaje); // Enviar el personaje tal como está en la base de datos
+        res.json(personaje);
     } catch (error) {
         console.error('Error al obtener el personaje:', error);
         res.status(500).json({ error: 'Error al obtener el personaje' });
@@ -38,21 +38,16 @@ const getPersonajeById = async (req, res) => {
 const createPersonaje = async (req, res) => {
     try {
         const { name, nation, weapon, element, description} = req.body;
-
-        // Validación de campos obligatorios
+       
         if (!name || !nation || !weapon || !element) {
             return res.status(400).json({ error: 'Todos los campos obligatorios deben completarse.' });
         }
-
-        // Verifica si hay una imagen subida
         if (!req.file) {
             return res.status(400).json({ error: 'Debe subir una imagen.' });
         }
 
-        // Construir la ruta relativa de la imagen
         const imagePath = `/images/personajes/${req.file.filename}`;
-
-        // Crear el nuevo personaje
+     
         const nuevoPersonaje = new Personaje({
             name,
             nation,
@@ -71,7 +66,7 @@ const createPersonaje = async (req, res) => {
     }
 };
 
-// Editar un personaje por ID
+
 const updatePersonaje = async (req, res) => {
     try {
         const { name, nation, weapon, element, description } = req.body;
@@ -79,7 +74,7 @@ const updatePersonaje = async (req, res) => {
 
         const datosActualizados = { name, nation, weapon, element, description };
 
-        // Solo agregar la imagen si se proporciona
+ 
         if (image) datosActualizados.image = image;
 
         const personajeActualizado = await Personaje.findByIdAndUpdate(req.params.id, datosActualizados, { new: true });
@@ -94,7 +89,6 @@ const updatePersonaje = async (req, res) => {
     }
 };
 
-// Eliminar un personaje por ID
 const deletePersonaje = async (req, res) => {
     try {
         const personajeEliminado = await Personaje.findByIdAndDelete(req.params.id);

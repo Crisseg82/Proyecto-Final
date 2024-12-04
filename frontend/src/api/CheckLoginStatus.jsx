@@ -20,7 +20,7 @@ const CheckLoginStatus = ({ setUser }) => {
         checkStatus();
     }, [setUser]);
 
-    return null; // Este componente no renderiza nada
+    return null;
 };
 
 export default CheckLoginStatus;

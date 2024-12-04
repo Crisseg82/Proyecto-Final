@@ -36,15 +36,15 @@ const fileFilter = (req, file, cb) => {
 
 const upload = multer({
     storage,
-    limits: { fileSize: 5 * 1024 * 1024 }, // Tamaño máximo: 5 MB
+    limits: { fileSize: 5 * 1024 * 1024 },
     fileFilter,
 });
 
 // Rutas
-router.get('/', getAllPersonajes); // Obtener todos los personajes
-router.get('/:id', getPersonajeById); // Obtener un personaje por ID
-router.post('/', upload.single('image'), createPersonaje); // Crear un nuevo personaje
-router.put('/:id', upload.single('image'), updatePersonaje); // Actualizar un personaje
-router.delete('/:id', deletePersonaje); // Eliminar un personaje
+router.get('/', getAllPersonajes);
+router.get('/:id', getPersonajeById);
+router.post('/', upload.single('image'), createPersonaje); 
+router.put('/:id', upload.single('image'), updatePersonaje); 
+router.delete('/:id', deletePersonaje); 
 
 module.exports = router;

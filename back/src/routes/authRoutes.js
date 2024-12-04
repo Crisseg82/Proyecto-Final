@@ -1,6 +1,6 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
-const Usuario = require('../models/Usuario'); // Asegúrate de que la ruta del modelo sea correcta
+const Usuario = require('../models/Usuario');
 
 const router = express.Router();
 
@@ -9,20 +9,16 @@ router.post('/register', async (req, res) => {
     const { username, password, nombre, apellido, email } = req.body;
 
     try {
-        // Validar campos obligatorios
         if (!username || !password || !nombre || !apellido || !email) {
             return res.status(400).json({ message: 'Todos los campos son obligatorios' });
         }
 
-        // Verificar si el usuario ya existe
         const existingUser = await Usuario.findOne({ username });
         if (existingUser) {
             return res.status(400).json({ message: 'El nombre de usuario ya está en uso' });
         }
-
-        // Hashear contraseña
         const hashedPassword = await bcrypt.hash(password, 10);
-
+        
         // Crear el nuevo usuario
         const newUser = new Usuario({
             username,
@@ -32,7 +28,6 @@ router.post('/register', async (req, res) => {
             email
         });
 
-        // Guardar en la base de datos
         await newUser.save();
         res.status(201).json({ message: 'Usuario registrado con éxito' });
     } catch (error) {
