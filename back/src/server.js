@@ -4,6 +4,8 @@ const path = require('path');
 const session = require('express-session');
 const connectDB = require('./config/db');
 require('dotenv').config();
+const app = express();
+
 
 if (!process.env.MONGODB_URI || !process.env.SESSION_SECRET) {
     console.error('Error: Faltan variables de entorno requeridas (MONGODB_URI o SESSION_SECRET).');
@@ -17,7 +19,7 @@ connectDB()
         process.exit(1);
     });
 
-const app = express();
+
 
 app.use(
     session({
@@ -36,9 +38,10 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use('/images', express.static(path.join(__dirname, 'src/public/images'), {
-    setHeaders: (res) => res.setHeader('Cache-Control', 'public, max-age=86400'),
+app.use('/images', express.static(path.join(__dirname, '../public/images'), {
+  setHeaders: (res) => res.setHeader('Cache-Control', 'public, max-age=86400'),
 }));
+
 
 app.get('/', (req, res) => {
     res.json({ message: 'Servidor backend funcionando correctamente', status: 'OK' });
@@ -54,6 +57,8 @@ app.use((err, req, res, next) => {
     console.error('Error no manejado:', err);
     res.status(500).json({ error: 'Error interno del servidor' });
 });
+
+
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

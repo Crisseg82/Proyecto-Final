@@ -13,13 +13,16 @@ const {
 // Configuración de multer
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        const dir = path.resolve(__dirname, '../public/images/personajes');
-        cb(null, dir); // Asegura que las imágenes se guarden en la carpeta correcta
+        const dir = path.join(__dirname, '../../public/images/personajes');
+        console.log('Ruta resuelta para guardar archivos:', dir); // Log para verificar
+        cb(null, dir);
     },
     filename: (req, file, cb) => {
-        cb(null, `${Date.now()}-${file.originalname}`); // Genera nombres únicos para los archivos
+        cb(null, `${Date.now()}-${file.originalname}`);
     },
 });
+
+
 
 // Validación del formato de archivo
 const fileFilter = (req, file, cb) => {

@@ -4,12 +4,20 @@ const Personaje = require('../models/personajesModel');
 const getAllPersonajes = async (req, res) => {
     try {
         const personajes = await Personaje.find();
+        personajes.forEach(personaje => {
+            // Asegúrate de que no haya duplicación
+            if (!personaje.image.startsWith('/images/personajes')) {
+                personaje.image = `/images/personajes/${personaje.image}`;
+            }
+        });
         res.json(personajes);
     } catch (error) {
         console.error('Error al obtener los personajes:', error);
         res.status(500).json({ error: 'Error al obtener los personajes' });
     }
 };
+
+
 
 // Obtener un personaje por ID
 const getPersonajeById = async (req, res) => {
@@ -18,31 +26,41 @@ const getPersonajeById = async (req, res) => {
         if (!personaje) {
             return res.status(404).json({ error: 'Personaje no encontrado' });
         }
-        res.json(personaje);
+        res.json(personaje); // Enviar el personaje tal como está en la base de datos
     } catch (error) {
         console.error('Error al obtener el personaje:', error);
         res.status(500).json({ error: 'Error al obtener el personaje' });
     }
 };
 
+
 // Crear un nuevo personaje
 const createPersonaje = async (req, res) => {
     try {
-        const { name, nation, weapon, element, description } = req.body;
+        const { name, nation, weapon, element, description} = req.body;
 
+        // Validación de campos obligatorios
         if (!name || !nation || !weapon || !element) {
             return res.status(400).json({ error: 'Todos los campos obligatorios deben completarse.' });
         }
 
-        // Crear el personaje
+        // Verifica si hay una imagen subida
+        if (!req.file) {
+            return res.status(400).json({ error: 'Debe subir una imagen.' });
+        }
+
+        // Construir la ruta relativa de la imagen
+        const imagePath = `/images/personajes/${req.file.filename}`;
+
+        // Crear el nuevo personaje
         const nuevoPersonaje = new Personaje({
             name,
             nation,
             weapon,
             element,
             description,
-            image: req.file ? `/images/personajes/${req.file.filename}` : null,
-            createdBy: req.user ? req.user._id : null, // ID del usuario
+            image: imagePath,
+            createdBy: req.user ? req.user._id : null, // ID del usuario si existe
         });
 
         await nuevoPersonaje.save();
@@ -97,4 +115,4 @@ module.exports = {
     createPersonaje,
     deletePersonaje,
     updatePersonaje
-}
+};

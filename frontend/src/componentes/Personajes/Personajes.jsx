@@ -4,81 +4,108 @@ import './Personajes.css';
 import CrearPersonaje from './CrearPersonaje';
 
 const Personajes = () => {
-    const [characters, setCharacters] = useState([]);
-    const [visibleCharacterId, setVisibleCharacterId] = useState(null);
-    const [favorites, setFavorites] = useState([]);
+    const [characters, setCharacters] = useState([]); // Lista de personajes
+    const [visibleCharacterId, setVisibleCharacterId] = useState(null); // ID del personaje con detalles visibles
+    const [favorites, setFavorites] = useState([]); // IDs de personajes favoritos
 
+    // Carga de personajes desde el backend
     useEffect(() => {
         const fetchCharacters = async () => {
             try {
-                const response = await axios.get('/personajes'); // Llama al endpoint del backend
+                const response = await axios.get('/personajes'); // Ruta del backend
                 setCharacters(response.data);
             } catch (error) {
-                console.error('Hubo un problema con la solicitud:', error);
+                console.error('Error al obtener los personajes:', error);
             }
         };
 
         fetchCharacters();
     }, []);
 
+    // Alternar detalles visibles
     const handleShowDetails = (_id) => {
         setVisibleCharacterId(visibleCharacterId === _id ? null : _id);
     };
 
+    // Alternar favoritos
     const handleToggleFavorite = (_id) => {
-        if (favorites.includes(_id)) {
-            setFavorites(favorites.filter(favId => favId !== _id));
-        } else {
-            setFavorites([...favorites, _id]);
-        }
+        setFavorites((prevFavorites) =>
+            prevFavorites.includes(_id)
+                ? prevFavorites.filter((favId) => favId !== _id)
+                : [...prevFavorites, _id]
+        );
     };
 
     return (
-        <div id='container-personajes'>
+        <div id="container-personajes">
             <h1>Personajes</h1>
+
+            {/* Formulario para crear personajes */}
             <CrearPersonaje />
+
+            {/* Lista de personajes */}
             <div className="characters-list">
-                {characters.map(character => (
+                {characters.map((character) => (
                     <div key={character._id} className="character-card">
                         <button
-                            className={favorites.includes(character._id) ? 'favorite-button active' : 'favorite-button'}
+                            className={`favorite-button ${favorites.includes(character._id) ? 'active' : ''
+                                }`}
                             onClick={() => handleToggleFavorite(character._id)}
                         >
-                            {favorites.includes(character._id) ? 'Quitar de Favoritos' : 'Añadir a Favoritos'}
+                            {favorites.includes(character._id)
+                                ? 'Quitar de Favoritos'
+                                : 'Añadir a Favoritos'}
                         </button>
-                        <img src={`http://localhost:5000${character.image}`} alt={character.name} />
-                        <div className='descripcionp'>
+                        <img
+                            src={`http://localhost:5000${character.image.replace('/images/personajes/images/personajes', '/images/personajes')}`}
+                            alt={character.name}
+                            className="character-image"
+                        />
+
+                        <div className="descripcionp">
                             <strong>{character.name}</strong>
                             <hr />
                             <p>{character.description}</p>
                             <button onClick={() => handleShowDetails(character._id)}>
-                                {visibleCharacterId === character._id ? 'Ocultar Detalles' : 'Mostrar Detalles'}
+                                {visibleCharacterId === character._id
+                                    ? 'Ocultar Detalles'
+                                    : 'Mostrar Detalles'}
                             </button>
                         </div>
+
+                        {/* Detalles del personaje */}
                         {visibleCharacterId === character._id && (
                             <div className="character-details">
-                                <p><strong>Nación:</strong> {character.nation}</p>
-                                <p><strong>Arma:</strong> {character.weapon}</p>
-                                <p><strong>Elemento:</strong> {character.element}</p>
+                                <p>
+                                    <strong>Nación:</strong> {character.nation}
+                                </p>
+                                <p>
+                                    <strong>Arma:</strong> {character.weapon}
+                                </p>
+                                <p>
+                                    <strong>Elemento:</strong> {character.element}
+                                </p>
                             </div>
                         )}
                     </div>
                 ))}
             </div>
-            <div id='favorites-section'>
+
+            {/* Sección de favoritos */}
+            <div id="favorites-section">
                 <h2>Favoritos</h2>
                 {characters
-                    .filter(character => favorites.includes(character._id))
-                    .map(favCharacter => (
+                    .filter((character) => favorites.includes(character._id))
+                    .map((favCharacter) => (
                         <div key={favCharacter._id} className="favorite-card">
-                            <img 
-                    src={`http://localhost:5000${favCharacter.image}`} 
-                    alt={favCharacter.name} 
-                />
+                            <img
+                                src={`http://localhost:5000${favCharacter.image.replace('/images/personajes/images/personajes', '/images/personajes')}`}
+                                alt={favCharacter.name}
+                                className="favorite-image"
+                            />
                             <strong>{favCharacter.name}</strong>
                         </div>
-                    ))
-                }
+                    ))}
             </div>
         </div>
     );

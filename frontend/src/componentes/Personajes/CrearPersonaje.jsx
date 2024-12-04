@@ -1,27 +1,28 @@
 import React, { useState } from "react";
 import axios from "axios";
+import './Personajes.css'
 
 const CrearPersonaje = () => {
     const [name, setName] = useState("");
     const [nation, setNation] = useState("");
     const [weapon, setWeapon] = useState("");
     const [element, setElement] = useState("");
+    const [description, setDescription] = useState("");
     const [image, setImage] = useState(null);
     const [mensaje, setMensaje] = useState("");
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Crear un objeto FormData para enviar los datos
         const formData = new FormData();
         formData.append("name", name);
         formData.append("nation", nation);
         formData.append("weapon", weapon);
         formData.append("element", element);
+        formData.append("description", description);
         formData.append("image", image);
 
         try {
-            // Hacer una solicitud POST al servidor
             const response = await axios.post(
                 "http://localhost:5000/api/personajes",
                 formData,
@@ -32,12 +33,12 @@ const CrearPersonaje = () => {
             setMensaje("Personaje creado exitosamente");
             console.log("Personaje creado:", response.data);
 
-            // Limpiar el formulario después de enviar
             setName("");
             setNation("");
             setWeapon("");
             setElement("");
-            setImage("");
+            setDescription("");
+            setImage(null);
         } catch (error) {
             console.error("Error al crear personaje:", error);
             setMensaje("Hubo un error al crear el personaje");
@@ -46,6 +47,9 @@ const CrearPersonaje = () => {
 
     return (
         <div className="crear-personaje">
+             
+
+              
             <h2>¡Crea tu propio personaje!</h2>
             {mensaje && <p>{mensaje}</p>}
             <form onSubmit={handleSubmit} encType="multipart/form-data">
@@ -60,31 +64,60 @@ const CrearPersonaje = () => {
                 <br />
 
                 <label htmlFor="nation">Nación:</label>
-                <input
-                    type="text"
+                <select
                     id="nation"
                     value={nation}
                     onChange={(e) => setNation(e.target.value)}
                     required
-                />
+                >
+                    <option value="">Seleccionar Nación</option>
+                    <option value="Mondstadt">Mondstadt</option>
+                    <option value="Liyue">Liyue</option>
+                    <option value="Sumeru">Sumeru</option>
+                    <option value="Inazuma">Inazuma</option>
+                    <option value="Fontaine">Fontaine</option>
+                </select>
                 <br />
 
                 <label htmlFor="weapon">Arma:</label>
-                <input
-                    type="text"
+                <select
                     id="weapon"
                     value={weapon}
                     onChange={(e) => setWeapon(e.target.value)}
                     required
-                />
+                >
+                    <option value="">Seleccionar Arma</option>
+                    <option value="Espada ligera">Espada ligera</option>
+                    <option value="Arco">Arco</option>
+                    <option value="Catalizador">Catalizador</option>
+                    <option value="Mandoble">Mandoble</option>
+                    <option value="Lanza">Lanza</option>
+                </select>
                 <br />
 
                 <label htmlFor="element">Elemento:</label>
-                <input
-                    type="text"
+                <select
                     id="element"
                     value={element}
                     onChange={(e) => setElement(e.target.value)}
+                    required
+                >
+                    <option value="">Seleccionar Elemento</option>
+                    <option value="Anemo">Anemo</option>
+                    <option value="Cryo">Cryo</option>
+                    <option value="Dendro">Dendro</option>
+                    <option value="Electro">Electro</option>
+                    <option value="Geo">Geo</option>
+                    <option value="Hydro">Hydro</option>
+                    <option value="Pyro">Pyro</option>
+                </select>
+                <br />
+
+                <label htmlFor="description">Descripción:</label>
+                <textarea
+                    id="description"
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
                     required
                 />
                 <br />
@@ -101,6 +134,7 @@ const CrearPersonaje = () => {
 
                 <button type="submit">Crear Personaje</button>
             </form>
+                
         </div>
     );
 };
